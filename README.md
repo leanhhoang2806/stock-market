@@ -18,7 +18,7 @@ Add host to `YAHOO_API_HOST`
 # Starting the front-end component
 1. Go back to root directory
 2. Go to UI component: `cd stock-dashboard-ui/ `
-3. Install dependencies
+3. Install dependencies `npm install`
 4. Start the server: `npm start`
 5. Open the browser and go to `localhost:30000`
 
