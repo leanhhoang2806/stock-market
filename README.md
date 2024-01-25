@@ -24,7 +24,7 @@ Add host to `YAHOO_API_HOST`
 
 # How to use the website
 !!!! Search and add stock will take some time due to external API call !!!!
-Could add a loading screen, but I'm not good with UI. 
+
 1. Add watch list (top right)
 2. To add stock: choose the watch list from Edit
 3. To watch stock: click on watch list in View
