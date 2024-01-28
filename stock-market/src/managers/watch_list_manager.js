@@ -52,7 +52,7 @@ class WatchListManager {
             return rows
         } catch (err){
             console.log(err)
-            throw new Error(`Error remove ${stockToRemove} for watch list id ${watchlistId} to the database`);
+            throw new Error(`Error remove ${stockToRemove} for watch list id ${watchListId} to the database`);
         }
     }
 }

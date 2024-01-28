@@ -13,7 +13,7 @@ class WebSocketServer {
 
     server.on('upgrade', (request, socket, head) => {
       this.wss.handleUpgrade(request, socket, head, (ws) => {
-        this.wss.emit('connection', ws, request, (socket) => {
+        this.wss.emit('connection', ws, request, () => {
           ws.on('message', (message) => {
             console.log('Received message:', message);
           });

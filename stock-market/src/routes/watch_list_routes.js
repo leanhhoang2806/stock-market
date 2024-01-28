@@ -9,28 +9,28 @@ const {
 
 
 module.exports = (yahooFinanceAPIManager, watchListManager) => {
-    const getWatchListById = async (req, res, next) => {
+    const getWatchListById = async (req) => {
         const { watchListId } = req.params;
         return await watchListManager.getWatchListById(watchListId);
       };
     
-    const getWatchListByUserId = async (req, res, next) => {
+    const getWatchListByUserId = async (req) => {
         const { userId } = req.params;
         return await watchListManager.fetchWatchListsByUserId(userId);
     }
     
-    const addWatchList = async (req, res, next) => {
+    const addWatchList = async (req) => {
         const { userId, watchListName, stockIds } = req.body;
         return await watchListManager.addWatchListByUserId(userId, watchListName, stockIds)
     }
     
-    const updateWatchList = async (req, res, next) => {
+    const updateWatchList = async (req) => {
         const { watchListId, stockNames } = req.body
         await yahooFinanceAPIManager.verifyStockExistence(stockNames)
         return await watchListManager.updateStockListById(watchListId, stockNames)
     }
     
-    const deleteStockWatchList = async (req, res, next) => {
+    const deleteStockWatchList = async (req) => {
         const { watchListId, stockNames } = req.body
         return await watchListManager.removeStockByName(watchListId, stockNames)
     }

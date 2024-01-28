@@ -22,7 +22,10 @@ class YahooFinanceAPIManager {
       const response = await axios.request(options);
       return response.data;
     } catch (error) {
-      throw error;
+      const errorMessage = 'An error occurred while searching markets.';
+      console.error(`${errorMessage} Details:`, error.message);
+      throw error
+      
     }
   }
 
@@ -31,6 +34,8 @@ class YahooFinanceAPIManager {
         const result = await this.searchMarkets(query)
         return result.body.find(stock => stock.symbol === query || query.toUpperCase() );
     } catch (error) {
+        const errorMessage = 'An error occurred while verify stock.';
+        console.error(`${errorMessage} Details:`, error.message);
         throw error;
     }
   }

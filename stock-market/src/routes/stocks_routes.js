@@ -5,7 +5,7 @@ const router = express.Router();
 const { handleResult } = require('../middleware/route_level_error');
 
 module.exports = (yahooFinanceAPIManager) => {
-    const searchStock = async (req, res, next) => {
+    const searchStock = async (req) => {
         const { stockName } = req.params;
         return await yahooFinanceAPIManager.searchMarkets(stockName);
     };
