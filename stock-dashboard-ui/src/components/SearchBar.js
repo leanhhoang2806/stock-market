@@ -1,10 +1,11 @@
 // SearchBar.js
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import { TextField, Button, List, ListItem } from '@mui/material';
 import { fetchDataFromStocksSearch } from '../APIs/stockSearchApi'
 import {updateWatchList} from '../APIs/watchListApis'
 
-const SearchBar = ({ open, onClose, selectedWatchlistId }) => {
+const SearchBar = ({ onClose, selectedWatchlistId }) => {
     const [stockData, setStockData] = useState([]);
     const [searchSymbol, setSearchSymbol] = useState('');
     const handleSearch =  async () => {
@@ -46,6 +47,12 @@ const SearchBar = ({ open, onClose, selectedWatchlistId }) => {
       )}
     </>
   );
+};
+
+SearchBar.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  selectedWatchlistId: PropTypes.string.isRequired,
 };
 
 export default SearchBar;

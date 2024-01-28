@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
+import PropTypes from 'prop-types';
 
 
 const getHoursAndMinutesOfDay = (epochTimes) => {
@@ -50,6 +51,10 @@ const ChartComponent = ({stockData}) => {
       bottomAxis='bottomAxis'
     />
   );
+};
+
+ChartComponent.propTypes = {
+  stockData: PropTypes.array.isRequired, // Adjust the type accordingly
 };
 
 export default ChartComponent;
