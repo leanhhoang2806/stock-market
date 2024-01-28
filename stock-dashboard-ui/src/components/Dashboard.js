@@ -19,6 +19,7 @@ import websocket from '../sockets/webSocket';
 
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(false);
   const [openWatchListPopUp, setOpenWatchListPopUp] = useState(false);
   const [openEditWatchListPopup, setOpenEditWatchListPopup] = useState(false);
   const [watchlistName, setWatchlistName] = useState('');
@@ -61,8 +62,10 @@ const Dashboard = () => {
   };
 
   const handleSaveWatchlist = async () => {
+    setLoading(true)
     await addWatchList(watchlistName)
     await getAllWatchList()
+    setLoading(false)
     handlePopupClose();
   };
 
@@ -73,6 +76,7 @@ const Dashboard = () => {
 
   return (
     <Container maxWidth="lg">
+      {loading && <div>Loading...</div>}
       <Grid container spacing={3}>
         <Grid item xs={8}>
           <Paper elevation={3} style={{ padding: '20px' }}>

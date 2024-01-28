@@ -1,9 +1,9 @@
-import axios from 'axios';
+import api from './mainApi';
 import { API_PATHS, AUTH_STORAGE_KEY, USER_ID } from './configs';
 
 const addWatchList = async (watchListName, stockNames = []) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         API_PATHS.WATCH_LIST,
         {
             userId: USER_ID,
@@ -25,7 +25,7 @@ const addWatchList = async (watchListName, stockNames = []) => {
 
 const getWatchlistByUserId = async () => {
     try {
-        const response = await axios.get(API_PATHS.WATCH_LIST + "user/" + USER_ID, {
+        const response = await api.get(API_PATHS.WATCH_LIST + "user/" + USER_ID, {
             headers: {
             Authorization: `Bearer ${AUTH_STORAGE_KEY}`,
             },
@@ -39,7 +39,7 @@ const getWatchlistByUserId = async () => {
 
 const updateWatchList = async ({watchListId, stockNames }) => {
     try {
-        const response = await axios.put(
+        const response = await api.put(
             API_PATHS.WATCH_LIST,
             {
                 watchListId,
@@ -60,7 +60,7 @@ const updateWatchList = async ({watchListId, stockNames }) => {
 
 const removeStockOnWatchList = async ({ selectedWatchlistId, stockNames }) => {
     try {
-      const response = await axios.delete(
+      const response = await api.delete(
         API_PATHS.WATCH_LIST,
         {
           headers: {

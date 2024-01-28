@@ -6,22 +6,28 @@ import { fetchDataFromStocksSearch } from '../APIs/stockSearchApi'
 import {updateWatchList} from '../APIs/watchListApis'
 
 const SearchBar = ({ onClose, selectedWatchlistId }) => {
+    const [loading, setLoading] = useState(false);
     const [stockData, setStockData] = useState([]);
     const [searchSymbol, setSearchSymbol] = useState('');
     const handleSearch =  async () => {
+        setLoading(true)
         const result = await fetchDataFromStocksSearch(searchSymbol)
         setStockData(result)
+        setLoading(false)
     }
 
     const handleClick = async (symbol) => {
+        setLoading(true)
         await updateWatchList({
             watchListId: selectedWatchlistId,
             stockNames: symbol
         })
+        setLoading(false)
         onClose()
     }
   return (
     <>
+      { loading && <div>Loading...</div>}
       <TextField
         label="Search"
         variant="outlined"
